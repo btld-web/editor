@@ -1,0 +1,91 @@
+@startuml
+
+skin rose
+
+title Btld Web - Editor
+
+
+
+class Project {
+  +String Name
+}
+class File {
+  +String Path
+  +Data
+}
+class Page {
+  +String Name
+}
+class Device {
+  +String Name
+  +Dimentions Viewport
+  +String Device
+}
+
+Page <|-- Project: n
+File <|-- Project: n
+Device <|-- Project: n
+
+
+
+class Screen {
+  +Url? Source
+  +Data Image
+}
+class Area {
+  +Bounds
+}
+
+Screen <|-- Page: n
+Area <|-- Screen: n
+
+
+
+class AreaHtml
+class AreaScreenshot
+class AreaOCR {
+  +Bounds
+  +String Content
+  +Int Order
+}
+class Comment {
+  +String Content
+  +User Creator
+  +Status
+}
+
+AreaHtml <|-- Area: 1
+AreaScreenshot <|-- Area: n=Devices
+AreaOCR <|-- Area: n
+AreaComment <|-- Area: n
+
+
+
+class Selection {
+  +Bounds
+  +String SelectorCss
+  +Int SelectorIndex
+}
+class Component
+class ComponentScss
+
+Selection <|-- Area: n
+Component <|-- Area: n
+ComponentScss <|-- Component: 1
+
+
+class User {
+  +String Name
+  +String Email
+}
+class Permission {
+  +Bool CanRead
+}
+
+Permission <|-- Project: n
+Permission <|-- Area: n
+User <|-- Permission: n
+
+
+
+@enduml
