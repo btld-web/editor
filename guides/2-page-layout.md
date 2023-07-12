@@ -1,0 +1,6 @@
+- header main footer
+- <btld-root> has grid
+- Contains: main, section, article, aside
+- Root grid, columns: breakout full
+- 2 Column layout
+- How to reorder on mobile.
