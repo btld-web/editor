@@ -3,12 +3,9 @@
   "version": "0.0.1",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
-  "es2015": "dist/esm/index.mjs",
-  "es2017": "dist/esm/index.mjs",
   "types": "dist/types/index.d.ts",
   "files": [
-    "dist/",
-    "loader/"
+    "dist/"
   ],
   "scripts": {
     "build": "stencil build --docs",
@@ -16,14 +13,19 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@stencil/core": "^4.0.0"
+    "@stencil/core": "^4.0.0",
+    "@stencil/postcss": "^2.1.0",
+    "autoprefixer": "^10.4.14",
+    "postcss-replace": "^2.0.1"
   },
   "devDependencies": {
     "@stencil/sass": "^3.0.4",
     "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.11",
+    "@types/node": "^16.18.38",
     "jest": "^27.5.1",
     "jest-cli": "^27.5.1",
-    "puppeteer": "^20.7.3"
+    "puppeteer": "^20.7.3",
+    "stencil-tailwind-plugin": "^1.8.0",
+    "tailwindcss": "^3.3.2"
   }
 }
