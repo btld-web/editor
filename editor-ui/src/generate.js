@@ -1,22 +1,31 @@
-import remarkGfm from 'remark-gfm';
+
 import ReactDOM from 'react-dom/client';
 import * as runtime from 'react/jsx-runtime';
-import { evaluateSync } from '@mdx-js/mdx';
+import { compile } from '@mdx-js/mdx';
 import { createElement } from 'react';
 import Sass from 'sass.js/dist/sass.js';
+
+import { unified } from 'unified'
+import remarkMdx from 'remark-mdx'
+import remarkParse from 'remark-parse'
+import { remarkMarkAndUnravel } from '@mdx-js/mdx/lib/plugin/remark-mark-and-unravel.js'
 
 
 export function generateDom(body, callback) {
     try {
-        const mdx = evaluateSync(body, {
-            ...runtime,
-            remarkPlugins: [remarkGfm]
-        }).default
-        const mdxReact = createElement(mdx);
-        const fragment = document.createDocumentFragment();
-        const root = ReactDOM.createRoot(fragment);
-        root.render(mdxReact, () => callback(fragment));  
-    } catch {}   
+        const pipeline = unified();
+        pipeline
+            .use(remarkParse)
+            .use(remarkMdx)
+            .use(remarkMarkAndUnravel)
+        console.log(body, pipeline);
+        console.log(pipeline.parse(body));
+
+
+
+    } catch (e) {
+        console.error(e);
+    }   
 }
 
 export function generateCss(body) {

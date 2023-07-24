@@ -7,7 +7,10 @@ import { generateCss, generateDom } from './generate';
 export function App() {
 
   const [codeScss, setCodeScss] = React.useState(".test {  }");
-  const [codeMdx, setCodeMdx] = React.useState("#test <demo>demo</demo>");
+  const [codeMdx, setCodeMdx] = React.useState(`
+  # test <Demo class={{test: true}}>demo</Demo>
+  {[].map(item => <test>{item}</test>)}
+  `);
 
   const editorDidMount = (editor, monaco) => {
     console.log(editor, monaco);
