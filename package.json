@@ -1,5 +1,8 @@
 {
-  "dependencies": {
-    "glidejs": "^2.1.0"
-  }
+  "scripts": {
+    "start": "npm run start -w editor-ui"
+  },
+  "workspaces": [
+    "editor-ui"
+  ]
 }
