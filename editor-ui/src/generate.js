@@ -5,10 +5,11 @@ import { compile } from '@mdx-js/mdx';
 import { createElement } from 'react';
 import Sass from 'sass.js/dist/sass.js';
 
-import { unified } from 'unified'
-import remarkMdx from 'remark-mdx'
-import remarkParse from 'remark-parse'
-import { remarkMarkAndUnravel } from '@mdx-js/mdx/lib/plugin/remark-mark-and-unravel.js'
+import { unified } from 'unified';
+import remarkMdx from 'remark-mdx';
+import remarkParse from 'remark-parse';
+import { remarkMarkAndUnravel } from '@mdx-js/mdx/lib/plugin/remark-mark-and-unravel.js';
+import remarkRehype from 'remark-rehype';
 
 
 export function generateDom(body, callback) {
@@ -18,10 +19,9 @@ export function generateDom(body, callback) {
             .use(remarkParse)
             .use(remarkMdx)
             .use(remarkMarkAndUnravel)
-        console.log(body, pipeline);
-        console.log(pipeline.parse(body));
-
-
+        
+        const tree = pipeline.parse(body);
+        console.log(tree);
 
     } catch (e) {
         console.error(e);

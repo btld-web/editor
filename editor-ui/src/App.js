@@ -9,7 +9,9 @@ export function App() {
   const [codeScss, setCodeScss] = React.useState(".test {  }");
   const [codeMdx, setCodeMdx] = React.useState(`
   # test <Demo class={{test: true}}>demo</Demo>
-  {[].map(item => <test>{item}</test>)}
+  <div test="123" />
+  <span><span><span>*!!*</span></span></span>
+  {[].map(item => <test>{item} *!!*</test>)}
   `);
 
   const editorDidMount = (editor, monaco) => {
