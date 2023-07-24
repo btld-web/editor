@@ -1,42 +1,13 @@
 import React from 'react';
-import { Editor, loader } from "@monaco-editor/react";
+import { Editor } from "@monaco-editor/react";
 import { PreviewComponent } from './PreviewComponent';
 import './App.scss';
-import { initializeMonacoMdx } from '@mdx-js/monaco';
-import * as monaco from 'monaco-editor'
-
-
-
-loader.init().then((monaco) => {
-  self.MonacoEnvironment = {
-    getWorker(_, label) {
-        console.log(label);
-        switch (label) {
-            case 'scss':
-              return new Worker(
-                new URL('monaco-editor/esm/vs/language/css/css.worker', import.meta.url),
-              )
-            default:
-              return new Worker(
-                new URL('@mdx-js/monaco/mdx.worker.js', import.meta.url),
-              )
-            /*default:
-              return new Worker(
-                new URL('monaco-editor/esm/vs/editor/editor.worker', import.meta.url),
-              )*/
-        }
-    }
-  };
-
-  monaco.languages.register({id: 'mdx'});
-  initializeMonacoMdx(monaco);
-});
-
+import { generateCss, generateDom } from './generate';
 
 export function App() {
 
-  const [codeScss, setCodeScss] = React.useState("<Demo>demo</Demo>");
-  const [codeMdx, setCodeMdx] = React.useState("<Demo>demo</Demo>");
+  const [codeScss, setCodeScss] = React.useState(".test {  }");
+  const [codeMdx, setCodeMdx] = React.useState("#test <demo>demo</demo>");
 
   const editorDidMount = (editor, monaco) => {
     console.log(editor, monaco);
@@ -45,11 +16,21 @@ export function App() {
 
   const onChangeScss = (value, event) => {
     console.log(value, event);
+    generateCss(value);
   };
 
-  const onChangeMdx = (value, event) => {
-    console.log(value, event);
+  const onChangeMdx = (value) => {
+    generateDom(value, function (fragment) {
+      var root = document.createElement('div');
+      root.appendChild(fragment)
+      console.log(root.innerHTML);
+    });
   };
+
+  function handleEditorValidation(markers) {
+    // model markers
+    markers.forEach((marker) => console.log('onValidate:', marker.message));
+  }
 
   const options = {};
 
@@ -62,15 +43,17 @@ export function App() {
         defaultValue={codeScss}
         options={options}
         onChange={onChangeScss}
+        onValidate={handleEditorValidation}
        />
       <Editor
         height="400px"
-        defaultLanguage="mdx"
+        defaultLanguage="markdown"
         theme="vs-dark"
         defaultValue={codeMdx}
         options={options}
         onChange={onChangeMdx}
         onMount={editorDidMount}
+        onValidate={handleEditorValidation}
        />
       <PreviewComponent></PreviewComponent>
     </div>

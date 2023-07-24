@@ -4,5 +4,8 @@
   },
   "workspaces": [
     "editor-ui"
-  ]
+  ],
+  "dependencies": {
+    "remark-gfm": "^3.0.1"
+  }
 }
