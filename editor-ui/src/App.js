@@ -1,8 +1,11 @@
 import React from 'react';
-import { Editor } from "@monaco-editor/react";
+import { Editor } from "./editor.jsx";
 import { PreviewComponent } from './PreviewComponent';
 import './App.scss';
 import { generateCss, generateDom } from './generate';
+
+import traverse from "@babel/traverse";
+import MonacoJSXHighlighter from 'monaco-jsx-highlighter';
 
 export function App() {
 
@@ -15,6 +18,16 @@ export function App() {
   {[].map(item => <test>{item} *!!*</test>)}
   </>
   `);
+
+  loader.init().then((monaco) => {
+    const monacoJSXHighlighter = new MonacoJSXHighlighter(
+      monaco, babel, traverse, aMonacoEditor()
+    );
+    // Activate highlighting (debounceTime default: 100ms)
+    monacoJSXHighlighter.highlightOnDidChangeModelContent(100);
+    // Activate JSX commenting
+    monacoJSXHighlighter.addJSXCommentCommand();
+  });
 
   const editorDidMount = (editor, monaco) => {
     console.log(editor, monaco);
@@ -54,7 +67,7 @@ export function App() {
        />
       <Editor
         height="400px"
-        defaultLanguage="jsx"
+        defaultLanguage="javascript"
         theme="vs-dark"
         defaultValue={codeMdx}
         options={options}
