@@ -1,8 +1,9 @@
 import { basicSetup, EditorView } from "codemirror";
 import { javascript } from "@codemirror/lang-javascript";
+import { sass } from "@codemirror/lang-sass";
 import React from 'react';
 
-export const Editor = () => {
+export const Editor = ({lang}) => {
 
     let view;
 

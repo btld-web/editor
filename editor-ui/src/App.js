@@ -3,9 +3,7 @@ import { Editor } from "./editor.jsx";
 import { PreviewComponent } from './PreviewComponent';
 import './App.scss';
 import { generateCss, generateDom } from './generate';
-
-import traverse from "@babel/traverse";
-import MonacoJSXHighlighter from 'monaco-jsx-highlighter';
+import { Slider } from './slider/slider.jsx';
 
 export function App() {
 
@@ -19,63 +17,13 @@ export function App() {
   </>
   `);
 
-  loader.init().then((monaco) => {
-    const monacoJSXHighlighter = new MonacoJSXHighlighter(
-      monaco, babel, traverse, aMonacoEditor()
-    );
-    // Activate highlighting (debounceTime default: 100ms)
-    monacoJSXHighlighter.highlightOnDidChangeModelContent(100);
-    // Activate JSX commenting
-    monacoJSXHighlighter.addJSXCommentCommand();
-  });
-
-  const editorDidMount = (editor, monaco) => {
-    console.log(editor, monaco);
-    editor.focus();
-  };
-
-  const onChangeScss = (value, event) => {
-    console.log(value, event);
-    generateCss(value);
-  };
-
-  const onChangeMdx = (value) => {
-    generateDom(value, function (fragment) {
-      var root = document.createElement('div');
-      root.appendChild(fragment)
-      console.log(root.innerHTML);
-    });
-  };
-
-  function handleEditorValidation(markers) {
-    // model markers
-    markers.forEach((marker) => console.log('onValidate:', marker.message));
-  }
-
   const options = {};
 
   return (
     <div className="App">
-      <Editor
-        height="400px"
-        defaultLanguage="scss"
-        theme="vs-dark"
-        defaultValue={codeScss}
-        options={options}
-        onChange={onChangeScss}
-        onValidate={handleEditorValidation}
-       />
-      <Editor
-        height="400px"
-        defaultLanguage="javascript"
-        theme="vs-dark"
-        defaultValue={codeMdx}
-        options={options}
-        onChange={onChangeMdx}
-        onMount={editorDidMount}
-        onValidate={handleEditorValidation}
-       />
+      <Editor />
       <PreviewComponent></PreviewComponent>
+      <Slider></Slider>
     </div>
   );
 }

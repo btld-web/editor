@@ -1,0 +1,21 @@
+.slider, .handle, .track  {
+    height: 30px;
+}
+
+.slider {
+    position: relative;
+}
+
+.track {
+    background-color: red;
+}
+
+.handle {
+    width: 30px;
+    background-color: green;
+    position: absolute;
+    left: var(--position-x);
+    top: 0;
+    z-index: 2;
+    transform: translate3d(var(--transform), 0, 0);
+}
