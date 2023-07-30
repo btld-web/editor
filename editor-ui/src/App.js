@@ -4,6 +4,7 @@ import { PreviewComponent } from './PreviewComponent';
 import './App.scss';
 import { generateCss, generateDom } from './generate';
 import { Slider } from './slider/slider.jsx';
+import { Preview } from './preview/preview.jsx';
 
 export function App() {
 
@@ -24,6 +25,7 @@ export function App() {
       <Editor />
       <PreviewComponent></PreviewComponent>
       <Slider></Slider>
+      <Preview></Preview>
     </div>
   );
 }

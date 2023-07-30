@@ -6,6 +6,7 @@
     "editor-ui"
   ],
   "dependencies": {
+    "panzoom": "^9.4.3",
     "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
