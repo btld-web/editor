@@ -12,12 +12,11 @@ These components would usualy be throw away code or large component frameworks. 
 Actions `Open Id`, ``
 
 ## `Aria` (Semantic Selectors)
+- https://www.youtube.com/watch?v=h2AOXBeVrgI
+- https://www.youtube.com/watch?v=fI9VM5zzpu8
+- https://benmyers.dev/blog/semantic-selectors/
+- https://www.youtube.com/watch?v=lWu5zf_S9R4
 
-References:
-https://www.youtube.com/watch?v=h2AOXBeVrgI
-https://www.youtube.com/watch?v=fI9VM5zzpu8
-https://benmyers.dev/blog/semantic-selectors/
-https://www.youtube.com/watch?v=lWu5zf_S9R4
-
+## Form Components
 
 
