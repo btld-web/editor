@@ -6,7 +6,7 @@ This would be a suite of tiny web components that try to be interoperable to cre
 
 ## Motivation
 
-These components would usualy be throw away code or large component frameworks. Personally I have implemented these types of components for multiple projects - mostly without much thought and therfore often sub par.
+These components would usualy be throw away code or large component frameworks. Personally I have implemented these types of components for multiple projects - mostly without much thought and therefore often sub par.
 
 
 Actions `Open Id`, ``
