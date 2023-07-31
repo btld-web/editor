@@ -17,6 +17,18 @@ Actions `Open Id`, ``
 - https://benmyers.dev/blog/semantic-selectors/
 - https://www.youtube.com/watch?v=lWu5zf_S9R4
 
-## Form Components
+## Form Reading List
+- https://github.com/twbs/bootstrap/tree/main/scss/forms
+- https://github.com/tailwindlabs/tailwindcss-forms
+- https://github.com/grommet/grommet/blob/master/src/js/components/RadioButton/StyledRadioButton.js
+- https://mui.com/material-ui/react-select/
+- https://github.com/mui/material-ui/tree/master/packages/mui-material/src/Select
+- https://github.com/palantir/blueprint/blob/develop/packages/select/src/components/select/select2.md
+- https://github.com/foundation/foundation-sites/tree/develop/scss/forms
+- https://github.com/pure-css/pure/blob/master/src/forms/css/forms.css
+- https://github.com/dhg/Skeleton/blob/master/css/skeleton.css
+- https://github.com/jgthms/bulma/tree/master/sass/form
+- https://github.com/cardinalcss/cardinalcss/blob/master/components/forms.less
+- https://github.com/Dogfalo/materialize/blob/v1-dev/sass/components/forms/_checkboxes.scss
 
 
