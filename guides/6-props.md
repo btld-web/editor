@@ -1,2 +1,0 @@
-Custom component properties:
-    config={}
